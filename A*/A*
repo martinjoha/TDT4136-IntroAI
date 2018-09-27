@@ -75,9 +75,6 @@ class AStar:
             if self.algorithm != "BFS":
                 open.sort(key=lambda x: x.f)
 
-
-
-
     # Attaching the node to a parent node
     def attach_and_eval(self, child, parent):
         child.h = abs(child.x - self.endnode.x) + abs(child.y - self.endnode.y)
@@ -165,6 +162,9 @@ class Grid:
                 current = current.parent
 
 
+# Main part of the project where i will draw a canvas using tkinter to visualize the board and the path
+# to take from A to B. Will also display the open and closed nodes
+# where * is closed and x is open
 def draw_task_1(inboard, algorithm):
     master = Tk()
     w = Canvas(master, width=600, height=210)

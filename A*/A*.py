@@ -1,4 +1,5 @@
 from tkinter import *
+import time
 
 class SearchNode:
 
@@ -24,7 +25,7 @@ class AStar:
         self.grid = grid                        # The initial grid containing n nodes
         self.startnode = startnode              # The startpoint of the path we want to find.
         self.endnode = endnode                  # Goal
-        self.algorithm = algorithm              # The selected algorithm we want to run on the grid, default will be A*
+        self.algorithm = algorithm              # The selected algorithm we want to run on the grid, default will be A*.py
 
 
     # getting all the adjacent nodes. Will remove a node if it is the nodes parent
@@ -55,14 +56,14 @@ class AStar:
             # Just changing the char value of all the open and closed nodes for easy visualization
             if current == self.endnode and self.algorithm != "BFS":
                 print("success")
-                for node in open:
+                """for node in open:
                     node.char = "x"
                 for node in closed:
                     if node != self.startnode:
-                        node.char = "*"
+                        node.char = "*" """
                 return
             closed.append(current)
-            # The general A* star algorithm
+            # The general A*.py star algorithm
             for successor in current.successors:
                 if successor.char == "#":
                     pass
@@ -160,6 +161,7 @@ class Grid:
                     break
                 current.char = '•'
                 current = current.parent
+            print(self)
 
 
 # Main part of the project where i will draw a canvas using tkinter to visualize the board and the path
@@ -251,6 +253,7 @@ def draw_task_2(inboard, algorithm):
     mainloop()
 
 
+"""
 draw_task_1('./boards/board-1-1.txt', "AStar")
 draw_task_1('./boards/board-1-2.txt', "AStar")
 draw_task_1('./boards/board-1-3.txt', "AStar")
@@ -262,10 +265,10 @@ draw_task_2('./boards/board-2-3.txt', "AStar")
 draw_task_2('./boards/board-2-4.txt', "AStar")
 draw_task_2('./boards/board-2-4.txt', "Dijkstra")
 draw_task_2('./boards/board-2-4.txt', "BFS")
-
+"""
 
 #grid1 = Grid()
 #grid1.generate_task_1('./boards/board-1-2.txt')
-#grid2 = Grid()
-#grid2.generate_task_2('./boards/board-2-2.txt')
+grid2 = Grid()
+grid2.generate_path_board('./boards/board-2-2.txt')
 
